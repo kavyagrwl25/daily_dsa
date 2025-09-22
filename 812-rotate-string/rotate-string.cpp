@@ -8,12 +8,12 @@ public:
 
     bool rotateString(string s, string goal) {
         if (s.size() != goal.size()) return false;
-        /* string newS = s; */
+        string newS = s;
         for (int i = 0; i<s.size(); i++) {
-            if (s == goal) {
+            if (newS == goal) {
                 return true;
             }
-            s = rightRotateByOne(s);
+            newS = rightRotateByOne(newS);
         }
         return false;
     }
