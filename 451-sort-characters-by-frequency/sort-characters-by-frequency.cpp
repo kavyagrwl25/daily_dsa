@@ -14,7 +14,6 @@ public:
         sort(freq.begin(), freq.end(),
              [](auto& a, auto& b) { return a.first > b.first; });
 
-        
         string ans = "";
         for (int i = 0; i < 128; i++) {
             if (freq[i].first > 0)
@@ -24,17 +23,3 @@ public:
         return ans;
     }
 };
-
-/* unordered_map<char, int> freq;
-
-for (char c : s) {
-    freq[c]++;
-}
-
-sort(s.begin(), s.end(), [&](char a, char b) {
-    if (freq[a] == freq[b])
-        return a < b;
-    return freq[a] > freq[b];
-});
-
-return s; */
