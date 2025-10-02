@@ -1,4 +1,3 @@
-
 class Solution {
 public:
     int romanToInt(string s) {
@@ -11,7 +10,8 @@ public:
             if (i + 1 < s.size() && value[s[i]] < value[s[i + 1]]) {
 
                 ans -= value[s[i]];
-            } else {
+            } 
+            else {
                 ans += value[s[i]];
             }
         }
