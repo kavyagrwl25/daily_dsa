@@ -1,9 +1,9 @@
 class Solution {
 public:
-     string longestPalindrome(string s) {
-        if (s.empty()) return "";
-
+    string longestPalindrome(string s) {
         int n = s.size();
+        if (n == 0) return "";
+
         int start = 0, maxLen = 1;
 
         auto expand = [&](int left, int right) {
@@ -18,8 +18,8 @@ public:
         };
 
         for (int i = 0; i < n; i++) {
-            expand(i, i);      
-            expand(i, i + 1);  
+            expand(i, i);     // Odd length palindrome
+            expand(i, i + 1); // Even length palindrome
         }
 
         return s.substr(start, maxLen);
