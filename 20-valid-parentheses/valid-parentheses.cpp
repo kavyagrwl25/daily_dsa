@@ -10,7 +10,9 @@ public:
                 if(st.empty()) return false;
                 char ch = st.top();
                 st.pop();
-                if(ch == '(' && s[i] == ')' || ch == '{' && s[i] == '}' || ch == '[' && s[i] == ']' );
+                if(ch == '(' && s[i] == ')' || ch == '{' && s[i] == '}' || ch == '[' && s[i] == ']' ){
+                    continue;
+                }
                 else return false;
             }
         }
