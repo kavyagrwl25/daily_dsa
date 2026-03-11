@@ -4,7 +4,7 @@ public:
         unordered_map<int, int> next;
         stack<int> s;
 
-        for (int i = nums2.size() - 1; i >= 0; --i) {
+        for (int i = nums2.size() - 1; i >= 0; i--) {
             while (!s.empty() && s.top() <= nums2[i]) {
                 s.pop();
             }
