@@ -1,11 +1,11 @@
 class Solution {
 public:
 
-    bool checkPalindrome(string &s, int i, int j){
-        while(i < j){
-            if(s[i] != s[j]) return false;
-            i++;
-            j--;
+    bool isPal(string &s, int left, int right){
+        while(left < right){
+            if(s[left] != s[right]) return false;
+            left++;
+            right--;
         }
         return true;
     }
@@ -18,7 +18,7 @@ public:
         while(i < j){
 
             if(s[i] != s[j]){
-                return checkPalindrome(s, i+1, j) || checkPalindrome(s, i, j-1);
+                return isPal(s, i + 1, j) || isPal(s, i, j - 1);
             }
 
             i++;
