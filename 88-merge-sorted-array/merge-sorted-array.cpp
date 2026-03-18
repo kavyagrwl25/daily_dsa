@@ -5,7 +5,7 @@ public:
         int b = m+n-1;
         int c = n-1;
         while(c>=0){
-            if( a>=0 && nums1[a] > nums2[c] ){
+            if(a>=0 && nums1[a] > nums2[c]){
                 nums1[b] = nums1[a];
                 a--;
             }
