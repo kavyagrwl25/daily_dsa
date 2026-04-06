@@ -1,19 +1,18 @@
 class MyQueue {
 public:
-    stack<int> st1;           
-    stack<int> st2;           
+    stack<int> st1;
+    stack<int> st2;
     MyQueue() {
         
     }
-
-/* //we are doing this to change behaviour of stack to lifo  (just push the st1 to st2     then add, then again push st2 to st1) */
     
     void push(int x) {
-        while(!st1.empty()){            
+        
+        while(!st1.empty()){
             st2.push(st1.top());
             st1.pop();
         }
-        st2.push(x);
+        st1.push(x);
         while(!st2.empty()){
             st1.push(st2.top());
             st2.pop();
@@ -21,9 +20,9 @@ public:
     }
     
     int pop() {
-        int poppedElem = st1.top();
+        int a = st1.top();
         st1.pop();
-        return poppedElem;
+        return a;
     }
     
     int peek() {
