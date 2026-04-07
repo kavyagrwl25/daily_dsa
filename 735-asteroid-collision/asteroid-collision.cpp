@@ -4,34 +4,40 @@ public:
         stack<int> st;
 
         for (int i = 0; i < a.size(); i++) {
-            bool destroyed = false;
+            bool currDestroyed = false;
 
-            while (!st.empty() && st.top() > 0 && a[i] < 0) {
-                if (abs(a[i]) > st.top()) {
-                    st.pop();
+            if (!st.empty() && a[i] < 0 && st.top() > 0) {
+
+                while (!st.empty() && st.top() > 0) {
+                    if (abs(a[i]) > st.top()) {
+                        st.pop();
+                    }
+                    else if (abs(a[i]) == st.top()) {
+                        st.pop();
+                        currDestroyed = true;
+                        break;
+                    }
+                    else {
+                        currDestroyed = true;
+                        break;
+                    }
                 }
-                else if (abs(a[i]) == st.top()) {
-                    st.pop();
-                    destroyed = true;
-                    break;
-                }
-                else {
-                    destroyed = true;
-                    break;
+
+                if (!currDestroyed && (st.empty() || st.top() < 0)) {
+                    st.push(a[i]);
                 }
             }
-
-            if (!destroyed) {
+            else {
                 st.push(a[i]);
             }
         }
 
-        vector<int> ans(st.size());
-        for (int i = st.size() - 1; i >= 0; i--) {
-            ans[i] = st.top();
+        vector<int> ans;
+        while (!st.empty()) {
+            ans.push_back(st.top());
             st.pop();
         }
-
+        reverse(ans.begin(), ans.end());
         return ans;
     }
 };
