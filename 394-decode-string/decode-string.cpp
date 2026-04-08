@@ -20,12 +20,13 @@ public:
                 }
                 int k = stoi(a);
                 string repeat = "";
-                while (k--)
+                while (k--){
                     repeat += substr;
+                }
                 st.push_back(repeat);
             }
         }
-        for (string &part : st) {
+        for (string& part : st) {
             ans += part;
         }
         return ans;
