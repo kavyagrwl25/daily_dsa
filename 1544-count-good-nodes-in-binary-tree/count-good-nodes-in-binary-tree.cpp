@@ -28,8 +28,7 @@ public:
 
     int goodNodes(TreeNode* root) {
         int count = 0;
-        int val = root->val;
-        preOrder(root, val, count);
+        preOrder(root, root->val, count);
         return count;
     }
 };
