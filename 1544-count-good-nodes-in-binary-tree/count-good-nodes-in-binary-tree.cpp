@@ -12,23 +12,17 @@
 class Solution {
 public:
 
-    void preOrder(TreeNode* root, int val, int &count){
-        if(root == NULL){
-            return ;
-        }
-        if (root->val >= val) {
-            count++;
-        }
-
-        // update max for next nodes
+    void traverse(TreeNode* root, int val, int &count){
+        if(root == NULL) return ;
+        if(root->val >= val) count ++;
         val = max(val, root->val);
-        preOrder(root->left, val, count);
-        preOrder(root->right, val, count);
+        traverse(root->left, val, count);
+        traverse(root->right, val, count);
     }
 
     int goodNodes(TreeNode* root) {
         int count = 0;
-        preOrder(root, root->val, count);
+        traverse(root, root->val,count);
         return count;
     }
 };
