@@ -2,14 +2,19 @@
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
-       unordered_set<int> set;
-       set.reserve(nums.size());
-        for(int num : nums){
-            if(!set.insert(num).second){
+
+        unordered_set<int> st;
+
+        for (int num : nums) {
+
+            if (st.find(num) != st.end()) {
                 return true;
             }
+
+            st.insert(num);
         }
-    return false;
+
+        return false;
     }
 };
 
@@ -35,10 +40,21 @@ public:
 
 
 
+
+
+
+
+
+
+
+
 /* 
- sort(nums.begin(),nums.end());
-        bool flag = false;
-        for(int i =0;i<nums.size()-1;i++){
-            if(nums[i] == nums[i+1]) return true;
+
+unordered_set<int> set;
+       set.reserve(nums.size());
+        for(int num : nums){
+            if(!set.insert(num).second){
+                return true;
+            }
         }
-        return flag; */
+    return false; */
