@@ -1,21 +1,15 @@
 class Solution {
 public:
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
-        unordered_map<string, vector<string>>
-            mp; // eg=> "aet" → ["eat", "tea", "ate"]
-
-        for (string s : strs) {
-            string key = s; // copy the string to sort while keeping original
-                            // string as same
+        unordered_map<string, vector<string>> mp;  
+        for(auto it: strs) {
+            string key = it;
             sort(key.begin(), key.end());
-
-            mp[key].push_back(s);
+            mp[key].push_back(it);
         }
-
         vector<vector<string>> ans;
-
-        for (auto entry : mp) {
-            ans.push_back(entry.second);
+        for(auto it: mp) {
+            ans.push_back(it.second);
         }
         return ans;
     }
