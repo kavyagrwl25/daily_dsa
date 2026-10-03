@@ -1,30 +1,19 @@
 class Solution {
 public:
     int characterReplacement(string s, int k) {
-        unordered_map<char, int> mp;
-
+        vector<int> arr(128, 0);
         int left = 0;
         int maxFreq = 0;
-        int maxLen = 0;
-
-        for (int right = 0; right < s.size(); right++) {
-
-            mp[s[right]]++;
-
-            maxFreq = max(maxFreq, mp[s[right]]);
-
-            int windowSize = right - left + 1;
-
-            while (windowSize - maxFreq > k) {
-                mp[s[left]]--;
+        int maxWindowSize = 0;
+        for(int right = 0; right <= s.size() - 1; right++) {
+            arr[s[right]]++;
+            maxFreq = max(maxFreq, arr[s[right]]);
+            while(maxFreq + k < (right - left + 1)) {
+                arr[s[left]]--;
                 left++;
-
-                windowSize = right - left + 1;
             }
-
-            maxLen = max(maxLen, windowSize);
+            maxWindowSize = max(maxWindowSize, right - left + 1);
         }
-
-        return maxLen;
+        return maxWindowSize;
     }
 };
