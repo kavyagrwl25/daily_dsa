@@ -4,7 +4,7 @@ public:
         vector<int> arr(128, 0);
         int n = s.size();
         int left = 0;
-        int maxSize = 0;
+        int maxWindowSize = 0;
         for(int right = 0; right < n; right++) {
             arr[s[right]]++;
             while(arr[s[right]] > 1) {
@@ -12,8 +12,8 @@ public:
                 left++;
             }
            
-            maxSize = max(maxSize, right - left + 1);
+            maxWindowSize = max(maxWindowSize, right - left + 1);
         }
-        return maxSize;
+        return maxWindowSize;
     }
 };
