@@ -12,8 +12,10 @@ public:
             window[s2[right]]++;
             while (right - left != n) {
                 right++;
+                if (right == s2.size())
+                    return false;
+
                 window[s2[right]]++;
-                if(right == s2.size()) return false;
             }
             // fix the window size
             if (window == arr)
