@@ -7,14 +7,7 @@ public:
         if (st.empty()) {
             st.push({value, value});
         } else {
-
-            if (st.top().second > value) {
-                
-                st.push({value, value});
-
-            } else {
-                st.push({value, st.top().second});
-            }
+            st.push({value, min(st.top().second, value)});
         }
     }
 
