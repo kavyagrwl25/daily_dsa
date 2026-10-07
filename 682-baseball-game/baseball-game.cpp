@@ -14,7 +14,6 @@ public:
             else if(operations[i] == "+"){
                 int x = st.top();
                 st.pop();
-                int y = st.top();
                 int z = x + st.top();
                 st.push(x);
                 st.push(z);
