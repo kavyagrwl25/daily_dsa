@@ -1,20 +1,20 @@
 class Solution {
 public:
-    vector<int> dailyTemperatures(vector<int>& temperatures) {
-        vector<int> arr(temperatures.size());
-        stack<int> st;
-        for(int i=temperatures.size()-1; i>=0; i--){
-            while(!st.empty() && temperatures[i] >= temperatures[st.top()]){
+    vector<int> dailyTemperatures(vector<int>& temp) {
+        stack<pair<int, int>> st;
+        vector<int> arr(temp.size(), 0);
+        for(int i = temp.size() - 1; i >= 0; i--) {
+            while(!st.empty() && st.top().first <= temp[i]) {
                 st.pop();
             }
-            if(st.empty()){
-                arr[i] = 0;
+            if(!st.empty()) {
+                arr[i] = st.top().second - i;
             }
-            else {
-                arr[i] = st.top() - i;
-            }
-            st.push(i);
+            st.push({temp[i], i});
         }
         return arr;
     }
 };
+
+
+// NGE => so use MONO DEC STACK
