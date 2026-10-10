@@ -1,6 +1,7 @@
 class MyHashMap {
-public:
+    private:
     int data[1000001];
+public:
     MyHashMap() {
         fill(data, data + 1000001, -1);
     }
