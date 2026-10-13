@@ -3,5 +3,5 @@ Select a.name, b.bonus
 From Employee a
 Left Join Bonus b
     On a.empId = b.empId
-Where Bonus Is Null
-    Or Bonus < 1000
+Where b.bonus Is Null
+    Or b.bonus < 1000
