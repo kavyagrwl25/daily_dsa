@@ -1,16 +1,17 @@
+
 class Solution {
 public:
     int jump(vector<int>& nums) {
+        int maxPoint = 0;
+        int currPoint = 0;
         int jumps = 0;
-        int currentEnd = 0;
-        int farthest = 0;
 
         for (int i = 0; i < nums.size() - 1; i++) {
-            farthest = max(farthest, i + nums[i]);
+            maxPoint = max(maxPoint, i + nums[i]);
 
-            if (i == currentEnd) {
+            if (i == currPoint) {
                 jumps++;
-                currentEnd = farthest;
+                currPoint = maxPoint;
             }
         }
 
