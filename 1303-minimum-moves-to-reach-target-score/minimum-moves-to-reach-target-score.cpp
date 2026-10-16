@@ -3,7 +3,7 @@ public:
     int minMoves(int target, int maxDoubles) {
         if(maxDoubles == 0) return target-1;
         int count = 0;
-        while(target) {
+        while(target != 1) {
             if(target%2 == 0 && maxDoubles) {
                 target /= 2;
                 maxDoubles--;
@@ -11,6 +11,6 @@ public:
             else target--;
             count++;
         }
-        return count-1;
+        return count;
     }
 };
