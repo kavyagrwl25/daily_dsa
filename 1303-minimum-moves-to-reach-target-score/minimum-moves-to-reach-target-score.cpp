@@ -7,6 +7,7 @@ public:
             if(target%2 == 0 && maxDoubles) {
                 target /= 2;
                 maxDoubles--;
+                if(maxDoubles == 0) return count+target;
             }
             else target--;
             count++;
