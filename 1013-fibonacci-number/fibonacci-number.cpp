@@ -1,19 +1,19 @@
 
 class Solution {
 public:
+    unordered_map<int, int> dp;
+
     int fib(int n) {
         if (n <= 1) return n;
 
-        int a = 0;
-        int b = 1;
-        int c;
-
-        for (int i = 2; i <= n; i++) {
-            c = a + b;
-            a = b;
-            b = c;
+        // If already calculated, reuse it
+        if (dp.count(n)) {
+            return dp[n];
         }
 
-        return c;
+        // Calculate and store the answer
+        dp[n] = fib(n - 1) + fib(n - 2);
+
+        return dp[n];
     }
 };
