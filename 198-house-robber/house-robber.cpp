@@ -3,7 +3,7 @@ public:
 
     vector<int> dp;
 
-    int rec(vector<int> nums, int i) {
+    int rec(vector<int> &nums, int i) {
         if(i >= nums.size()) return 0;
         if(dp[i] != -1) return dp[i];
         int rob = nums[i] + rec(nums, i+2);
