@@ -7,7 +7,7 @@ public:
             if(dp[i][j] != -1) return dp[i][j];
         if (s[i] == s[j])
             return dp[i][j] = solve(s, i + 1, j - 1);
-        return false;
+        return dp[i][j] = false;
     }
     string longestPalindrome(string s) {
         int st = 0;
