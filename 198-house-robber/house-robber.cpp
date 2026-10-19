@@ -1,21 +1,19 @@
-
 class Solution {
 public:
+
     vector<int> dp;
 
-    int solve(int i, vector<int>& nums) {
-        if (i >= nums.size()) return 0;
-
-        if (dp[i] != -1) return dp[i];
-
-        int rob = nums[i] + solve(i + 2, nums);
-        int skip = solve(i + 1, nums);
-
+    int rec(vector<int> nums, int i) {
+        if(i >= nums.size()) return 0;
+        if(dp[i] != -1) return dp[i];
+        int rob = nums[i] + rec(nums, i+2);
+        int skip = rec(nums, i+1);
         return dp[i] = max(rob, skip);
     }
 
     int rob(vector<int>& nums) {
+        int i = 0;
         dp.assign(nums.size(), -1);
-        return solve(0, nums);
+        return rec(nums, i);
     }
 };
