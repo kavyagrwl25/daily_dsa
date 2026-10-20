@@ -19,7 +19,7 @@ public:
         int sum = accumulate(nums.begin(), nums.end(), 0);
         if(sum % 2 != 0) return false;
         int i = 0;
-        dp.assign(nums.size(), vector<int>(sum, -1));
+        dp.assign(nums.size(), vector<int>(sum/2+1, -1));
         return rec(nums, i, sum/2);
     }
 };
