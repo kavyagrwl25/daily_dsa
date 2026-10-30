@@ -1,19 +1,15 @@
-
 class Solution {
 public:
-    unordered_map<int, int> dp;
-
     int fib(int n) {
-        if (n <= 1) return n;
-
-        // If already calculated, reuse it
-        if (dp.count(n)) {
-            return dp[n];
+        if(n == 0 || n == 1) return n;
+        vector<int> dp(n+1);
+        dp[0] = 0;
+        dp[1] = 1;
+        int ans = 0;
+        for(int i=2; i<=n; i++) {
+            dp[i] = dp[i-1] + dp[i-2];
+            ans = dp[i];
         }
-
-        // Calculate and store the answer
-        dp[n] = fib(n - 1) + fib(n - 2);
-
-        return dp[n];
+        return ans;
     }
 };
