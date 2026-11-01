@@ -1,19 +1,20 @@
 class Solution {
 public:
-
-    vector<int> dp;
-
-    int rec(vector<int> &nums, int i) {
-        if(i >= nums.size()) return 0;
-        if(dp[i] != -1) return dp[i];
-        int rob = nums[i] + rec(nums, i+2);
-        int skip = rec(nums, i+1);
-        return dp[i] = max(rob, skip);
+    
+    int tab(vector<int>& nums, int n) {
+        vector<int> dp(n+1);  // storing max cost till that house
+        dp[0] = nums[0];    // nums is storing the cost of that house
+        dp[1] = max(nums[0], nums[1]);
+        int ans = 0;
+        for(int i=2; i<=n; i++) {
+            dp[i] = max(nums[i] + dp[i-2], dp[i-1]);
+        }
+        return dp[n];
     }
 
     int rob(vector<int>& nums) {
-        int i = 0;
-        dp.assign(nums.size(), -1);
-        return rec(nums, i);
+        if(nums.size() == 1) return nums[0];
+        int i = nums.size()-1;
+        return tab(nums, i);
     }
 };
