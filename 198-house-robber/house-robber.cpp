@@ -2,14 +2,15 @@ class Solution {
 public:
     
     int tab(vector<int>& nums, int n) {
-        vector<int> dp(n+1);  // storing max cost till that house
-        dp[0] = nums[0];    // nums is storing the cost of that house
-        dp[1] = max(nums[0], nums[1]);
-        int ans = 0;
+        int prev_prev = nums[0];    
+        int prev = max(nums[0], nums[1]);
+        int ans = max(prev_prev, prev);
         for(int i=2; i<=n; i++) {
-            dp[i] = max(nums[i] + dp[i-2], dp[i-1]);
+            ans = max(nums[i] + prev_prev, prev);
+            prev_prev = prev;
+            prev = ans;
         }
-        return dp[n];
+        return ans;
     }
 
     int rob(vector<int>& nums) {
@@ -18,3 +19,6 @@ public:
         return tab(nums, i);
     }
 };
+
+// prev_prev = maximum money till house i-2
+// prev = maximum money till house i-1
