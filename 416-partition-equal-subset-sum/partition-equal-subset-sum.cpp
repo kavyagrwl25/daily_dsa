@@ -1,25 +1,24 @@
 class Solution {
 public:
-
     vector<vector<int>> dp;
-
-    bool rec(vector<int> &nums, int i, int sum) {
+    bool rec(int i, int sum, vector<int> &nums) {
         if(sum == 0) return true;
-        if(i >= nums.size()) return false;
+        if(i < 0) return false;
         if(dp[i][sum] != -1) return dp[i][sum];
-        bool yes = false;
+        bool take = false;
         if(nums[i] <= sum) {
-            yes = rec(nums, i+1, sum - nums[i]);
+            take = rec(i-1, sum - nums[i], nums);
         }
-        bool no = rec(nums, i+1, sum);
-        return dp[i][sum] = yes || no;
+        bool skip = rec(i-1, sum, nums);
+        return dp[i][sum] = take || skip;
     }
+
 
     bool canPartition(vector<int>& nums) {
         int sum = accumulate(nums.begin(), nums.end(), 0);
         if(sum % 2 != 0) return false;
-        int i = 0;
-        dp.assign(nums.size(), vector<int>(sum/2+1, -1));
-        return rec(nums, i, sum/2);
+        int i = nums.size()-1;
+        dp.assign(nums.size(), vector<int>(sum / 2 + 1, -1));
+        return rec(i, sum/2, nums);
     }
 };
